@@ -1,0 +1,45 @@
+DATASET:
+  SHUFFLE: True
+
+tokenizer:
+  padding_side: 'right'
+  use_fast: False 
+
+LLM:
+  NAME: 'sqlcoder'
+  TEMP: 0.1
+
+lora:
+  lora_r: 128 
+  lora_alpha: 128 
+  lora_dropout: 0.1 
+  use_dora: False 
+  
+bnb: 
+  load_in_4bit: True 
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_use_double_quant: True 
+  
+train:
+  epochs: 50
+  max_steps: -1                # make it -1 to use epochs
+  max_seq_length: 2750
+  batch_size: 32               
+  gradient_accumulation_steps: 1  # your effective batch size is batch_size*gradient_accumulation_steps
+  learning_rate: 0.00002 
+  report_to: "wandb"
+  gradient_checkpointing: True   ## Leads to reduction in memory but slows down training by 20% 
+  dataloader_num_workers: 0
+  evaluation_strategy: 'steps'
+  logging_strategy: 'steps'
+  save_strategy: 'steps'
+  logging_steps: 1
+  eval_steps: 10
+  save_steps: 10
+  load_best_model_at_end: True
+  lr_scheduler_type: 'linear'
+  run_name: llama3_r64
+
+test:
+  batch_size: 8
+  num_samples: 1 
