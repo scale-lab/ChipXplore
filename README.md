@@ -73,6 +73,15 @@ files and matching PDK files, not just the PDK SQL database.
 
 **1. Prepare the inputs and OpenROAD environment.**
 
+Prebuilt PicoRV32 DEF snapshots for Sky130A are included in this repository:
+[floorplan](designs/picorv32-openlane-6967548/floorplan/picorv32.def),
+[placement](designs/picorv32-openlane-6967548/placement/picorv32.def),
+[CTS](designs/picorv32-openlane-6967548/cts/picorv32.def), and
+[routing](designs/picorv32-openlane-6967548/routing/picorv32.def).
+Use `designs/picorv32-openlane-6967548/` as the input directory. The design
+parser also requires matching SDC files for each stage and the Sky130A PDK;
+the DEF files alone are not sufficient to run the export.
+
 See [OpenROAD installation with Bazel and Python](README.openroad.md) for the
 build job, Python verification, and interpreter setup. Make the Python
 dependencies in `requirements.txt` available to its Python interpreter. Run the
