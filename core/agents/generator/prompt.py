@@ -1,3 +1,9 @@
+# Copyright (c) 2025, SCALE Lab, Brown University
+# All rights reserved.
+
+# This source code is licensed under the BSD-style license found in the
+# LICENSE file in the root directory of this source tree.
+
 DECOMPOSER_SYS_PROMPT = lambda dialect, reqs: f"""Given a [Database schema] description, and a [Question], you need to use valid {dialect} and understand the database, and then decompose the question into subquestions for text-to-SQL generation.
 When generating SQL, we should always consider constraints:
 

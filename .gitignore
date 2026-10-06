@@ -39,3 +39,8 @@ wandb/
 unsloth_compiled_cache/
 
 .env
+# Local OpenROAD installation and Slurm build logs
+.tools/
+openroad-build-*.log
+
+openlane-picorv32-*.log

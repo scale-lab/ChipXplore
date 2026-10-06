@@ -73,9 +73,12 @@ files and matching PDK files, not just the PDK SQL database.
 
 **1. Prepare the inputs and OpenROAD environment.**
 
-Install OpenROAD with Python support (`odb` and `openroad`) and make the Python
+See [OpenROAD installation with Bazel and Python](README.openroad.md) for the
+build job, Python verification, and interpreter setup. Make the Python
 dependencies in `requirements.txt` available to its Python interpreter. Run the
 parsing work in a compute allocation on HPC systems.
+
+To generate an example design, see [OpenLane and PicoRV32 DEF generation](README.openlane.md).
 
 Organize the design snapshots by stage. Each stage needs one DEF and one SDC;
 SPEF is optional and is read when present:
@@ -103,7 +106,7 @@ Run from the repository root. Unlike the SQL builder, the design parser's
 export PDK_ROOT=/path/to/pdks
 export PYTHONPATH="$PWD${PYTHONPATH:+:$PYTHONPATH}"
 
-openroad -exit -python core/parsers/design/design_parser.py \
+openroad-python core/parsers/design/design_parser.py \
   --input ./designs/my-design \
   --pdk "$PDK_ROOT/sky130A/libs.ref" \
   --stage routing \
@@ -113,8 +116,8 @@ openroad -exit -python core/parsers/design/design_parser.py \
 
 Repeat for `floorplan`, `placement`, and `cts`, changing both `--stage` and the
 output subdirectory. Always specify a stage: the parser's multi-stage mode
-reuses the output directory and can overwrite earlier CSV files. Direct script
-execution through OpenROAD is intentional here; `PYTHONPATH` makes the
+reuses the output directory and can overwrite earlier CSV files. Use the `openroad-python` launcher from the
+[OpenROAD setup](README.openroad.md); `PYTHONPATH` makes the
 repository's `core` imports available.
 
 Each output directory contains `designs.csv`, `cells.csv`, `pins.csv`,

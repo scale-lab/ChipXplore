@@ -1,3 +1,9 @@
+# Copyright (c) 2025, SCALE Lab, Brown University
+# All rights reserved.
+
+# This source code is licensed under the BSD-style license found in the
+# LICENSE file in the root directory of this source tree.
+
 import sys 
 
 from config.sky130 import Sky130TechLefCorner, sky130_scl_corners, SCLVariants, get_sky130_corner_path, cell_variant_sky130, get_sky130_pdk_path, get_sky130_lib_paths, get_sky130_techlef_paths, get_sky130_lef_paths

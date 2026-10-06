@@ -1,3 +1,9 @@
+# Copyright (c) 2025, SCALE Lab, Brown University
+# All rights reserved.
+
+# This source code is licensed under the BSD-style license found in the
+# LICENSE file in the root directory of this source tree.
+
 lib_template = """
     // Start of a cell definition
     cell (\"<cell_name>\") {{
